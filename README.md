@@ -5,3 +5,5 @@ This is a basic Queue data structure that has been implemented in python. It con
 to contain other methods as well.
 
 Created as a refresher for how to create and use a simple queue in python
+
+also shows simple example of handling exceptions in python
