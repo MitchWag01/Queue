@@ -44,10 +44,13 @@ class Queue:
         Return:
             any type - value that was at the beginning of the queue
         """
-        if self.is_Empty():
-            raise IndexError("Cannot delete values from an empty Queue")
-        self.__length -= 1
-        return self.__queue.pop(0)
+        try:
+            value = self.__queue.pop(0)
+        except IndexError as e:
+            print("Cannot delete value from an Empty queue")
+            value = None
+
+        return value
 
     def peek(self):
         """
@@ -58,9 +61,13 @@ class Queue:
         Return:
             None
         """
-        if self.is_Empty():
-            raise IndexError("Cannot View first value from an empty Queue")
-        return self.__queue[0]
+        try:
+            value = self.__queue[0]
+        except IndexError as e:
+            print("Unable to remove value from Empty queue")
+            value = None
+
+        return value
 
     def size(self):
         """
@@ -108,6 +115,9 @@ our_queue.too_string()
 # using our saved queue values
 print(stored_value_first * stored_value_second)
 
+our_queue.dequeue()
+our_queue.dequeue()
+our_queue.dequeue()
 
 
 
