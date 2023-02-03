@@ -7,7 +7,6 @@ class Queue:
     def __init__(self):
         # List object that is the queue itself, This will store the data values for us
         self.__queue = list()
-        self.__length = 0
 
     def is_Empty(self):
         """
@@ -31,7 +30,6 @@ class Queue:
             None
         """
         self.__queue.append(item)
-        self.__length += 1
 
     def dequeue(self):
         """
@@ -44,13 +42,9 @@ class Queue:
         Return:
             any type - value that was at the beginning of the queue
         """
-        try:
-            value = self.__queue.pop(0)
-        except IndexError as e:
-            print("Cannot delete value from an Empty queue")
-            value = None
-
-        return value
+        if self.is_Empty():
+            raise IndexError("Cannot delete values from an empty Queue")
+        return self.__queue.pop(0)
 
     def peek(self):
         """
@@ -61,13 +55,9 @@ class Queue:
         Return:
             None
         """
-        try:
-            value = self.__queue[0]
-        except IndexError as e:
-            print("Unable to remove value from Empty queue")
-            value = None
-
-        return value
+        if self.is_Empty():
+            raise IndexError("Cannot View first value from an empty Queue")
+        return self.__queue[0]
 
     def size(self):
         """
@@ -76,7 +66,7 @@ class Queue:
         Return:
             int - size of the queue
         """
-        return self.__length
+        return len(self.__queue)
 
     def too_string(self):
         """
